@@ -15,6 +15,16 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         python: ["3.8", "3.11", "3.13"]
+        exclude:
+          # ubuntu-latest 已是 24.04，系统库不再提供 Python 3.8，
+          # setup-python 会在装解释器这一步直接失败（尚未执行到本项目代码）。
+          # 3.8 仍然在支持范围内（见 pyproject 的 requires-python），
+          # 所以把它挪到仍提供 3.8 的 ubuntu-22.04 上继续测。
+          - os: ubuntu-latest
+            python: "3.8"
+        include:
+          - os: ubuntu-22.04
+            python: "3.8"
 
     steps:
       - uses: actions/checkout@v4
@@ -25,6 +35,9 @@ jobs:
 
       - name: 编译检查
         run: python -m compileall -q switch_net_fix
+
+      - name: 入口检查
+        run: python -m switch_net_fix --version
 
       - name: 运行测试
         run: python -m unittest discover -s tests -t . -v

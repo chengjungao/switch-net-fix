@@ -6,6 +6,15 @@
 
 ## [未发布]
 
+### 修复
+
+- CI 中 `ubuntu-latest / py3.8` 组合失败：`ubuntu-latest` 已迁移到 24.04，
+  系统库不再提供 Python 3.8，`actions/setup-python` 在装解释器阶段就报错退出，
+  尚未执行到本项目代码。改为把 3.8 放到仍提供该版本的 `ubuntu-22.04` 上运行，
+  保留 3.8 的覆盖（`requires-python` 仍为 `>=3.8`，Windows 侧 3.8 一直是通过的）。
+- CI 增加「入口检查」步骤（`python -m switch_net_fix --version`），
+  用于捕获打包与 `__main__` 入口的回归。
+
 ### 文档
 
 - `docs/PROTOCOL.md` 新增 **§9「官方口径与常见误传的核对」**：

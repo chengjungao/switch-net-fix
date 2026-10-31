@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "switch-net-fix"
+version = "1.0.1"
+description = "本地联网修复服务：让已停止运营的国行 Nintendo Switch 通过联网自检"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "chengjungao" }]
+keywords = ["nintendo-switch", "tencent", "proxy", "local-network"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Internet :: Proxy Servers",
+]
+dependencies = []
+
+[project.scripts]
+switch-net-fix = "switch_net_fix.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/chengjungao/switch-net-fix"
+Issues = "https://github.com/chengjungao/switch-net-fix/issues"
+
+[tool.setuptools]
+packages = ["switch_net_fix"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

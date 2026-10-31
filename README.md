@@ -1,5 +1,9 @@
 # switch-net-fix
 
+[![CI](https://github.com/chengjungao/switch-net-fix/actions/workflows/ci.yml/badge.svg)](https://github.com/chengjungao/switch-net-fix/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 让已停止运营的国行 Nintendo Switch 重新通过联网自检。
 
 腾讯于 **2026-05-15 22:00** 关闭国行 Switch 全部网络服务，并把 `*.nintendoswitch.cn`
